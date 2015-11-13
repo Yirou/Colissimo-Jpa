@@ -6,7 +6,7 @@
         <class>com.logical.colissimos.model.Position</class>
         <properties>
             <property name="javax.persistence.jdbc.user" value="root"/>
-            <property name="javax.persistence.jdbc.password" value="street"/>
+            <property name="javax.persistence.jdbc.password" value=""/>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/colissimo"/>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
             <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
