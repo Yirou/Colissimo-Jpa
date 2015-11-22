@@ -7,14 +7,18 @@ package com.logical.colissimos.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -35,21 +39,22 @@ public class Position implements Serializable {
     @Column(name = "emplacement", nullable = true, length = 255)
     private String emplacement;
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "COLIS_ID")
     private Colis colis;
-    @Column
+    @Column(name = "etat")
     private String etat;
-    @Column
+    @Column(name = "date_ajout")
+    @Temporal(TemporalType.DATE)
     private Date dateAjout;
 
     public Position() {
     }
 
-    public Position(double latitude, double longitude, String emplacement, Colis colis, String etat,Date dateAjout) {
+    public Position(double latitude, double longitude, String emplacement,String etat,Date dateAjout) {
         this.dateAjout=dateAjout;
         this.latitude = latitude;
         this.longitude = longitude;
         this.emplacement = emplacement;
-        this.colis = colis;
         this.etat = etat;
     }
 

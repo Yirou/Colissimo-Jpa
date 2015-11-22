@@ -17,6 +17,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -40,7 +41,8 @@ public class Colis implements Serializable {
     private String destination;
     @Column(name = "identifiant", nullable = true, length = 255)
     private String identifiant;
-    @Column
+    @Column(name = "date_ajout")
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateAjoute;
     @OneToMany(mappedBy = "colis", cascade = CascadeType.ALL)
     List<Position> mesPositions = new ArrayList<>();

@@ -8,6 +8,7 @@ package com.logical.colissimos.model.dao;
 import com.logical.colissimos.model.Colis;
 import com.logical.colissimos.model.dao.iDao.ColisDaoLocal;
 import java.util.List;
+import javax.ejb.Stateful;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -17,10 +18,10 @@ import javax.persistence.Query;
  *
  * @author yirou
  */
-@Stateless
+@Stateful
 public class ColisDao implements ColisDaoLocal {
 
-    @PersistenceContext(unitName = "ColissimoPU")
+    @PersistenceContext
     private EntityManager em;
 
     @Override

@@ -43,12 +43,14 @@ public class AjoutPositionServlet extends HttpServlet {
         String action = request.getParameter("action");
         if (action != null) {
             if (action.equalsIgnoreCase("Valider")) {
+                System.out.println("Ajout position");
                 double latitude = Double.parseDouble(request.getParameter("latitude"));
                 double longitude = Double.parseDouble(request.getParameter("longitude"));
                 String emplacement = request.getParameter("ville");
                 String etat = request.getParameter("etat");
                 Colis colis = dao.getColis(Integer.parseInt(request.getParameter("idColis")));
-                Position position = new Position(latitude, longitude, emplacement, colis, etat,new Date());
+                Position position = new Position(latitude, longitude, emplacement, etat,new Date());
+                position.setColis(colis);
                 positionDao.add(position);
                 colis.getMesPositions().add(position);
                 dao.update(colis);

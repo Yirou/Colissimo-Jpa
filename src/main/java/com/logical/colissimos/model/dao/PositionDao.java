@@ -6,6 +6,7 @@
 package com.logical.colissimos.model.dao;
 
 import com.logical.colissimos.model.Position;
+import javax.ejb.Stateful;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -14,7 +15,7 @@ import javax.persistence.PersistenceContext;
  *
  * @author Yirou
  */
-@Stateless
+@Stateful
 public class PositionDao implements PositionDaoLocal {
     
     @PersistenceContext
