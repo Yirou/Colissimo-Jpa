@@ -10,7 +10,6 @@ import com.logical.colissimos.model.Position;
 import com.logical.colissimos.model.dao.iDao.PositionDaoLocal;
 import com.logical.colissimos.model.dao.iDao.ColisDaoLocal;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Date;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -22,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Yirou
  */
-public class AjoutPositionServlet extends HttpServlet {
+public class AddPackagePositionServlet extends HttpServlet {
 
     @EJB
     ColisDaoLocal dao;
@@ -43,7 +42,6 @@ public class AjoutPositionServlet extends HttpServlet {
         String action = request.getParameter("action");
         if (action != null) {
             if (action.equalsIgnoreCase("Valider")) {
-                System.out.println("Ajout position");
                 double latitude = Double.parseDouble(request.getParameter("latitude"));
                 double longitude = Double.parseDouble(request.getParameter("longitude"));
                 String emplacement = request.getParameter("ville");
@@ -57,12 +55,9 @@ public class AjoutPositionServlet extends HttpServlet {
                 request.setAttribute("isValid", true);
             }
         }
-//        String url = request.getRequestURL().toString();
 
         request.setAttribute("idColis", Integer.parseInt(request.getParameter("idColis")));
-        System.out.println(request.getAttribute("idColis"));
         getServletContext().getRequestDispatcher("/addPosition.jsp").forward(request, response);
-//        Colis colis=dao.getColis(id);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -15,12 +15,12 @@
     <div class="container-fluid">
         <div class="row">
             <div class=" col-lg-2">
-                <form action="ajout-colis"method="POST">
+                <form action="add-package"method="POST">
                     <input name="action" class="btn btn-info " value="Ajouter un nouveau colis" type="submit">
                 </form>
             </div>
             <div class="col-lg-10">
-                <form  role="search" class="navbar-form navbar-right" action="liste-colis" method="POST">
+                <form  role="search" class="navbar-form navbar-right" action="package-list" method="POST">
                     <div class="form-group">
                         <input type="text" class="form-control " placeholder="Indentifiant" name="identifiant">
                     </div>
@@ -68,7 +68,7 @@
                 <td><%= col.getOrigine()%></td>
                 <td><%= col.getDestination()%></td>
                 <td><a title="delete" href="delete?idColis=<%= col.getId()%>"><i class="glyphicon glyphicon-remove red"></i></a></td>
-                <td><a title="delete" href="ajout-position?idColis=<%= col.getId()%>"> Ajouter une position <i class="glyphicon glyphicon-pushpin"></i></a></td>
+                <td><a title="Add position" href="add-position?idColis=<%= col.getId()%>"> Ajouter une position <i class="glyphicon glyphicon-pushpin"></i></a></td>
 
             </tr>
 

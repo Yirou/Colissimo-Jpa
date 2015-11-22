@@ -38,10 +38,10 @@
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
                         <li class="active">
-                            <a href="liste-colis"><i class="fa fa-fw fa-dashboard"></i>Tableau de bord</a>
+                            <a href="package-list"><i class="fa fa-fw fa-dashboard"></i>Tableau de bord</a>
                         </li>
                         <li>
-                            <a href="liste-colis"><i class="fa fa-fw fa-bar-chart-o"></i> Liste des colis</a>
+                            <a href="package-list"><i class="fa fa-fw fa-bar-chart-o"></i> Liste des colis</a>
                         </li>
                         <li>
                             <a href="suivre-colis"><i class="fa fa-fw fa-table"></i> Suivre un colis</a>

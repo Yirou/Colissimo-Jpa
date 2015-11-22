@@ -3,10 +3,10 @@
 
     <div class="container-fluid">
         <div class="row">
-            <a href="liste-colis" class="btn btn-info">Liste des colis</a>
+            <a href="package-list" class="btn btn-info">Liste des colis</a>
             <hr>
 
-            <form action="ajout-position"method="POST">
+            <form action="add-position"method="POST">
                 <div class="row col-sm-12 col-lg-12 col-sm-12 col-xs-12 mon-container">
                     <input value="<%= request.getAttribute("idColis")%>" name="idColis" type="hidden"/>
                     <label for="longitude">Longitude:</label>

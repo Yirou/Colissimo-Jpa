@@ -6,9 +6,7 @@
 package com.logical.colissimos.servlet;
 
 import com.logical.colissimos.model.dao.iDao.ColisDaoLocal;
-import com.logical.colissimos.model.Colis;
 import java.io.IOException;
-import java.util.Date;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author yirou
  */
-public class AjoutColisServlet extends HttpServlet {
+public class PackageListServlet extends HttpServlet {
 
     @EJB
     private ColisDaoLocal dao;
@@ -35,28 +33,15 @@ public class AjoutColisServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String action = request.getParameter("action");
+        Object action = request.getParameter("action");
+        request.setAttribute("listeColis", dao.getAll());
         if (action != null) {
-            if (action.equalsIgnoreCase("Valider")) {
-                System.out.println(request.getParameter("identifiant") + "" + request.getParameter("poids") + "" + request.getParameter("valeur") + "" + request.getParameter("origine") + "" + request.getParameter("destination"));
-
-                String identifiant = (request.getParameter("identifiant"));
-                float poids = Float.parseFloat(request.getParameter("poids"));
-                double valeur = Double.parseDouble(request.getParameter("valeur"));
-                String origine = request.getParameter("origine");
-                String destination = request.getParameter("destination");
-                Colis colis = new Colis(identifiant, poids, valeur, origine, destination, new Date(), null);
-                dao.add(colis);
-                request.setAttribute("isValid", true);
-                request.setAttribute("listeColis", dao.getAll());
-                System.out.println("colis bien ajouté");
-//                getServletContext().getRequestDispatcher("/liste.jsp").forward(request, response);
-
+            if (action.toString().equalsIgnoreCase("chercher")) {
+                request.setAttribute("listeColis", dao.chercherColis(request.getParameter("identifiant").toLowerCase()));
             }
         }
 
-        getServletContext().getRequestDispatcher("/add.jsp").forward(request, response);
-
+        getServletContext().getRequestDispatcher("/liste.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

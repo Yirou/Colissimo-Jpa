@@ -6,7 +6,9 @@
 package com.logical.colissimos.servlet;
 
 import com.logical.colissimos.model.dao.iDao.ColisDaoLocal;
+import com.logical.colissimos.model.Colis;
 import java.io.IOException;
+import java.util.Date;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author yirou
  */
-public class ListeColisServlet extends HttpServlet {
+public class AddPackageServlet extends HttpServlet {
 
     @EJB
     private ColisDaoLocal dao;
@@ -33,16 +35,24 @@ public class ListeColisServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Object action = request.getParameter("action");
-        request.setAttribute("listeColis", dao.getAll());
+        String action = request.getParameter("action");
         if (action != null) {
-            if (action.toString().equalsIgnoreCase("chercher")) {
-                System.out.println("yes chercher");
-                request.setAttribute("listeColis", dao.chercherColis(request.getParameter("identifiant").toLowerCase()));
+            if (action.equalsIgnoreCase("Valider")) {
+                String identifiant = (request.getParameter("identifiant"));
+                float poids = Float.parseFloat(request.getParameter("poids"));
+                double valeur = Double.parseDouble(request.getParameter("valeur"));
+                String origine = request.getParameter("origine");
+                String destination = request.getParameter("destination");
+                Colis colis = new Colis(identifiant, poids, valeur, origine, destination, new Date(), null);
+                dao.add(colis);
+                request.setAttribute("isValid", true);
+                request.setAttribute("listeColis", dao.getAll());
+
             }
         }
 
-        getServletContext().getRequestDispatcher("/liste.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/add.jsp").forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
