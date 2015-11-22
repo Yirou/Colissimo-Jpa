@@ -5,7 +5,6 @@
  */
 package com.logical.colissimos.model.dao;
 
-import com.logical.colissimos.model.dao.iDao.PositionDaoLocal;
 import com.logical.colissimos.model.Position;
 import javax.ejb.Stateful;
 import javax.ejb.Stateless;
