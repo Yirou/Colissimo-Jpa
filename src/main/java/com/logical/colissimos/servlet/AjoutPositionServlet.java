@@ -7,7 +7,7 @@ package com.logical.colissimos.servlet;
 
 import com.logical.colissimos.model.Colis;
 import com.logical.colissimos.model.Position;
-import com.logical.colissimos.model.dao.PositionDaoLocal;
+import com.logical.colissimos.model.dao.iDao.PositionDaoLocal;
 import com.logical.colissimos.model.dao.iDao.ColisDaoLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
