@@ -53,7 +53,7 @@
 
                         <li class="list-group-item">
                             <span class="badge"><%= position.getDate()%></span>
-                            <%=position.getEmplacement()%>
+                            <%=position.getEmplacement()%>| <%= position.getEtat()%>
                         </li>
                         <%  }%>
                     </ul>
