@@ -39,6 +39,9 @@ public class PackageListServlet extends HttpServlet {
             if (action.toString().equalsIgnoreCase("chercher")) {
                 request.setAttribute("listeColis", dao.chercherColis(request.getParameter("identifiant").toLowerCase()));
             }
+            if(action.toString().equalsIgnoreCase("delete")){
+                System.out.println("Delete");
+            }
         }
 
         getServletContext().getRequestDispatcher("/liste.jsp").forward(request, response);
